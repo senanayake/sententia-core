@@ -1,0 +1,38 @@
+# Software Test Description (STD)
+
+{% if project_name %}
+**Project:** {{ project_name }}
+{% endif %}
+
+## Test Strategy
+Overview of the testing approach and methodology.
+
+## Test Requirements
+{% if requirements %}
+{% for r in requirements %}
+### Test Case: {{ r.id }} - {{ r.title }}
+- **Requirement Reference:** {{ r.id }}
+- **Test Objective:** Verify that {{ r.title }}
+- **Preconditions:**
+  - List any setup or prerequisites for the test
+- **Test Steps:**
+  1. Step 1 description
+  2. Step 2 description
+  3. Add more steps as needed
+- **Expected Results:**
+  - Describe the expected outcome of each test step
+- **Pass/Fail Criteria:**
+  - Define specific conditions that determine test success
+{% endfor %}
+{% else %}
+_No test requirements provided in context._
+{% endif %}
+
+## Test Environment
+- Hardware specifications
+- Software configurations
+- Tools and frameworks used
+
+## Risks and Contingencies
+- Potential risks in testing
+- Mitigation strategies

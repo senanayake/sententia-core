@@ -1,0 +1,14 @@
+# Stakeholder Requirements Document (SRD)
+
+{% if project_name %}
+**Project:** {{ project_name }}
+{% endif %}
+
+{% if requirements %}
+## Requirements
+{% for r in requirements %}
+- **{{ r.id }}**: {{ r.title }}
+{% endfor %}
+{% else %}
+_No requirements provided in context._
+{% endif %}

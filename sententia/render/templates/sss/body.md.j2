@@ -1,0 +1,23 @@
+# System/Software Specification Specification (SSS)
+
+{% if project_name %}
+**Project:** {{ project_name }}
+{% endif %}
+
+## System Overview
+A comprehensive specification of the system's functional and non-functional requirements.
+
+{% if requirements %}
+## System Requirements
+{% for r in requirements %}
+### {{ r.id }}: {{ r.title }}
+- **Description:** {{ r.description if r.description else 'No description provided.' }}
+- **Rationale:** {{ r.rationale if r.rationale else 'No rationale specified.' }}
+{% endfor %}
+{% else %}
+_No system requirements provided in context._
+{% endif %}
+
+## Constraints and Assumptions
+- List any key system constraints
+- Describe important assumptions about the system's environment or usage

@@ -1,0 +1,32 @@
+# Software Requirements Specification (SRS)
+
+{% if project_name %}
+**Project:** {{ project_name }}
+{% endif %}
+
+## Introduction
+### Purpose
+Detailed specification of software requirements for the project.
+
+## Functional Requirements
+{% if requirements %}
+{% for r in requirements %}
+### {{ r.id }}: {{ r.title }}
+- **Description:** {{ r.description if r.description else 'No description provided.' }}
+- **Acceptance Criteria:**
+  - Specify measurable conditions that must be met
+  - Ensure the requirement can be objectively validated
+{% endfor %}
+{% else %}
+_No functional requirements provided in context._
+{% endif %}
+
+## Non-Functional Requirements
+- **Performance:** Expected system performance characteristics
+- **Security:** Security requirements and constraints
+- **Usability:** User interface and user experience requirements
+
+## Constraints
+- Technical constraints
+- Regulatory or compliance requirements
+- Resource limitations

@@ -1,0 +1,35 @@
+
+services:
+  app:
+    build:
+      context: ./requirements_api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    container_name: requirements-api
+
+  ui:
+    build:
+      context: ./requirements_ui
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    container_name: requirements-ui
+    depends_on:
+      - app
+    volumes:
+      - ./requirements_api:/app
+      - ./:/workspace                       # mount repo root into /workspace
+    environment:
+      - PYTHONPATH=/workspace:/workspace/sententia  # make Python search the repo root and sententia
+    working_dir: /workspace/requirements_ui # keep Streamlit's cwd the same
+  tests:
+    build:
+      context: ./requirements_api
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    working_dir: /app
+    profiles:
+      - tests
+    command: pytest tests
